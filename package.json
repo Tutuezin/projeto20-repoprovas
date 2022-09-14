@@ -2,12 +2,12 @@
   "name": "projeto20-repoprovas",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/app.ts",
+  "main": "./src/server.ts",
   "scripts": {
-    "test": "",
+    "test": "jest --no-cache",
     "build": "tsc && npx prisma migrate deploy",
-    "start": "node ./dist/app.js",
-    "dev": "nodemon ./src/app.ts"
+    "start": "node ./dist/server.ts",
+    "dev": "nodemon ./src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -31,10 +31,15 @@
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
+    "@types/jest": "^29.0.2",
     "@types/node": "^18.7.18",
     "@types/pg": "^8.6.5",
+    "@types/supertest": "^2.0.12",
+    "jest": "^29.0.3",
     "nodemon": "^2.0.19",
     "prisma": "^4.3.1",
+    "supertest": "^6.2.4",
+    "ts-jest": "^29.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3"
   }
