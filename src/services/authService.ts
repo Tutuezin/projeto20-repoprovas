@@ -15,3 +15,15 @@ export async function signUp(userData: authTypes.IUserData) {
     password: hashedPassword,
   });
 }
+
+export async function signIn(userData: authTypes.IUserData) {
+  const emailExists = await authRepository.findEmail(userData.email);
+
+  authUtils.verifyEmailNotExists(emailExists);
+
+  if (emailExists?.password) {
+    cryptoUtils.checkPassword(userData.password, emailExists.password);
+    const token = authUtils.generateToken(emailExists);
+    return token;
+  }
+}
