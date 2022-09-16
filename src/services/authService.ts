@@ -10,7 +10,7 @@ export async function signUp(userData: authTypes.IUserData) {
 
   const hashedPassword = await cryptoUtils.encryptPassword(userData.password);
 
-  await authRepository.createUser({
+  return await authRepository.createUser({
     email: userData.email,
     password: hashedPassword,
   });

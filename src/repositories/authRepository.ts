@@ -8,5 +8,5 @@ export async function findEmail(email: string) {
 }
 
 export async function createUser(user: authTypes.IUserData) {
-  await prisma.user.create({ data: user });
+  return await prisma.user.create({ data: user });
 }
