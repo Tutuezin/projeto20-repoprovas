@@ -3,7 +3,7 @@ import * as testTypes from "../types/testTypes";
 import * as testService from "../services/testService";
 
 export async function createTest(req: Request, res: Response) {
-  const body: testTypes.ITestData = req.body;
+  const body: testTypes.ITest = req.body;
 
   const test = await testService.createTest(body);
 

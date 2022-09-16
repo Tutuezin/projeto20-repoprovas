@@ -11,6 +11,6 @@ testRouter.post(
   validateSchema(createTest),
   testController.createTest
 );
-testRouter.post("/signin");
+testRouter.post("/");
 
 export default testRouter;
