@@ -4,7 +4,7 @@ import { prisma } from "../src/config/database";
 import * as userFactory from "./factories/authFactory";
 
 beforeEach(async () => {
-  await prisma.$executeRaw`TRUNCATE TABLE users;`;
+  await prisma.$executeRaw`TRUNCATE TABLE users RESTART IDENTITY;`;
 });
 
 afterAll(async () => {
