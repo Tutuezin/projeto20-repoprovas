@@ -56,11 +56,19 @@ model Teacher {
 model Discipline {
   id                    Int     @id @default(autoincrement())
   name                  String  @unique
-  //term                Term @relation(fields: [termId], references: [id])
+  term                  Term @relation(fields: [termId], references: [id])
   termId                Int
   teachersDscipline     TeacherDiscipline[]
   
   @@map("disciplines")
+}
+
+model Term {
+  id                    Int     @id @default(autoincrement())
+  number                Int     @unique
+  discipline            Discipline[]
+  
+  @@map("terms")
 }
 
 
