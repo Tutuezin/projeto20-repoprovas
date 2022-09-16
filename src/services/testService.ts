@@ -6,6 +6,8 @@ import * as disciplineRepository from "../repositories/disciplineRepository";
 import * as disciplineUtils from "../utils/disciplineUtils";
 import * as teacherRepository from "../repositories/teacherRepository";
 import * as teacherUtils from "../utils/teacherUtils";
+import * as teacherDisciplineRepository from "../repositories/teacherDisciplineRepository";
+import * as teacherDisciplineUtils from "../utils/teacherDisciplineUtils";
 
 export async function createTest(testData: testTypes.ITest) {
   const categoryExists = await categoryRepository.getCategoryById(
@@ -22,6 +24,16 @@ export async function createTest(testData: testTypes.ITest) {
     testData.teacherId
   );
   teacherUtils.verifyTeacherExists(teacherExists);
+
+  const relationTeacherDiscipline =
+    await teacherDisciplineRepository.getTeacherDiscipline(
+      testData.teacherId,
+      testData.disciplineId
+    );
+
+  teacherDisciplineUtils.verifyTeacherDisciplineExists(
+    relationTeacherDiscipline
+  );
 
   return await testRepository.createTest(testData);
 }
