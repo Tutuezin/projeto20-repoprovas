@@ -5,11 +5,12 @@ import {
 import { User } from "@prisma/client";
 import jwt from "jsonwebtoken";
 
-export function verifyEmailExists(emailExists: any) {
+export function verifyEmailExists(emailExists: User | null) {
   if (emailExists) throw conflictError("Email");
 }
 
-export function verifyEmailNotExists(emailExists: any) {
+export function verifyEmailNotExists(emailExists: User | null) {
+  console.log(emailExists);
   if (!emailExists) throw unauthorizedError("Email or password");
 }
 
