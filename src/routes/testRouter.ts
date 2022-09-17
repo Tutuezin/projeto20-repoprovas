@@ -12,6 +12,10 @@ testRouter.post(
   validateSchema(createTest),
   testController.createTest
 );
-testRouter.post("/");
+testRouter.get(
+  "/test/discipline",
+  validateToken,
+  testController.getTestByDiscipline
+);
 
 export default testRouter;

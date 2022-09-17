@@ -58,9 +58,9 @@ model Discipline {
   name                  String  @unique
   term                  Term @relation(fields: [termId], references: [id])
   termId                Int
-  teachersDscipline     TeacherDiscipline[]
+  teachersDiscipline     TeacherDiscipline[] 
   
-  @@map("disciplines")
+  @@map("disciplines") 
 }
 
 model Term {

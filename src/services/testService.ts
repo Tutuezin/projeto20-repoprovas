@@ -48,3 +48,7 @@ export async function createTest(testData: testTypes.ITest) {
 
   return await testRepository.createTest(createTestData);
 }
+
+export async function getTestByDiscipline() {
+  return await testRepository.getTestByDiscipline(); //TODO fazer build do objeto
+}

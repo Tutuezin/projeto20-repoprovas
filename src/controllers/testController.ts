@@ -9,3 +9,9 @@ export async function createTest(req: Request, res: Response) {
 
   res.status(201).send(test);
 }
+
+export async function getTestByDiscipline(req: Request, res: Response) {
+  const result = await testService.getTestByDiscipline();
+
+  res.status(200).send(result);
+}
