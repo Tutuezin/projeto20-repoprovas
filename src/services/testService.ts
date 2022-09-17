@@ -12,6 +12,7 @@ import {
   teacherUtils,
   teacherDisciplineUtils,
 } from "../utils";
+import { info } from "console";
 
 export async function createTest(testData: testTypes.ITest) {
   const categoryExists = await categoryRepository.getCategoryById(
@@ -54,5 +55,32 @@ export async function getTestByDiscipline() {
 }
 
 export async function getTestByTeacher() {
-  return await testRepository.getTestByTeacher(); //TODO fazer build do objeto
+  const testByTeacher = await testRepository.getTestByTeacher();
+
+  const buildTestByTeacher = testByTeacher.map((item) => {
+    return {
+      teacherName: item.name,
+      infos: item.teachersDiscipline[0].tests.map((infos) => {
+        return {
+          categoryId: infos.category.id,
+          categoryName: infos.category.name,
+
+          infoTests: infos.category.tests
+            .map((infoTests) => {
+              const tests = {
+                testName: infoTests.name,
+                disciplineName: infoTests.teachersDiscipline.discipline.name,
+                teacherName: infoTests.teachersDiscipline.teacher.name,
+              };
+
+              if (infoTests.teachersDiscipline.teacher.name === item.name)
+                return tests;
+            })
+            .filter((notNull) => notNull),
+        };
+      }),
+    };
+  });
+
+  return buildTestByTeacher;
 }
