@@ -17,7 +17,7 @@ export async function getTestByDiscipline() {
           teachersDiscipline: {
             select: {
               tests: {
-                //distinct: ["teacherDisciplineId"], //? talvez tenha que usar o distinnct
+                distinct: ["categoryId"],
                 select: {
                   category: {
                     select: {
@@ -50,7 +50,38 @@ export async function getTestByDiscipline() {
 }
 
 export async function getTestByTeacher() {
-  const result = await prisma.term.findMany({});
+  const result = await prisma.teacher.findMany({
+    select: {
+      name: true,
+      teachersDiscipline: {
+        select: {
+          tests: {
+            distinct: ["categoryId"],
+            select: {
+              category: {
+                select: {
+                  id: true,
+                  name: true,
+                  tests: {
+                    select: {
+                      name: true,
+                      pdfUrl: true,
+                      teachersDiscipline: {
+                        select: {
+                          discipline: true,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            orderBy: [{ categoryId: "asc" }],
+          },
+        },
+      },
+    },
+  });
 
   return result;
 }
