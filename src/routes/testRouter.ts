@@ -8,6 +8,7 @@ const testRouter = Router();
 
 testRouter.post(
   "/test/create",
+  validateToken,
   validateSchema(createTest),
   testController.createTest
 );

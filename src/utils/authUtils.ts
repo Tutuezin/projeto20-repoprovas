@@ -10,7 +10,6 @@ export function verifyEmailExists(emailExists: User | null) {
 }
 
 export function verifyEmailNotExists(emailExists: User | null) {
-  console.log(emailExists);
   if (!emailExists) throw unauthorizedError("Email or password");
 }
 
