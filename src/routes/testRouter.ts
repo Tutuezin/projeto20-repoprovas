@@ -18,4 +18,6 @@ testRouter.get(
   testController.getTestByDiscipline
 );
 
+testRouter.get("/test/teacher", validateToken, testController.getTestByTeacher);
+
 export default testRouter;

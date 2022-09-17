@@ -52,3 +52,7 @@ export async function createTest(testData: testTypes.ITest) {
 export async function getTestByDiscipline() {
   return await testRepository.getTestByDiscipline(); //TODO fazer build do objeto
 }
+
+export async function getTestByTeacher() {
+  return await testRepository.getTestByTeacher(); //TODO fazer build do objeto
+}

@@ -46,13 +46,11 @@ export async function getTestByDiscipline() {
     },
   });
 
-  // const result = await prisma.term.findMany({
-  //   include: {
-  //     discipline: { orderBy: { termId: "asc" } },
-  //   },
-  // });
+  return result;
+}
 
-  console.log(result[2].discipline[0].teachersDiscipline[0].tests);
+export async function getTestByTeacher() {
+  const result = await prisma.term.findMany({});
 
   return result;
 }
