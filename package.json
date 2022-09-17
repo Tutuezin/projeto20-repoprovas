@@ -5,7 +5,7 @@
   "main": "./src/server.ts",
   "scripts": {
     "test": "jest --no-cache",
-    "build": "tsc",
+    "build": "tsc && npx prisma migrate deploy",
     "start": "node ./dist/server.ts",
     "dev": "nodemon ./src/server.ts"
   },

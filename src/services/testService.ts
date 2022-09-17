@@ -1,13 +1,17 @@
 import * as testTypes from "../types/testTypes";
-import * as testRepository from "../repositories/testRepository";
-import * as categoryRepository from "../repositories/categoryRepository";
-import * as categoryUtils from "../utils/categoryUtils";
-import * as disciplineRepository from "../repositories/disciplineRepository";
-import * as disciplineUtils from "../utils/disciplineUtils";
-import * as teacherRepository from "../repositories/teacherRepository";
-import * as teacherUtils from "../utils/teacherUtils";
-import * as teacherDisciplineRepository from "../repositories/teacherDisciplineRepository";
-import * as teacherDisciplineUtils from "../utils/teacherDisciplineUtils";
+import {
+  testRepository,
+  categoryRepository,
+  disciplineRepository,
+  teacherRepository,
+  teacherDisciplineRepository,
+} from "../repositories";
+import {
+  categoryUtils,
+  disciplineUtils,
+  teacherUtils,
+  teacherDisciplineUtils,
+} from "../utils";
 
 export async function createTest(testData: testTypes.ITest) {
   const categoryExists = await categoryRepository.getCategoryById(
@@ -35,5 +39,12 @@ export async function createTest(testData: testTypes.ITest) {
     relationTeacherDiscipline
   );
 
-  return await testRepository.createTest(testData);
+  const createTestData: testTypes.ITestData = {
+    name: testData.name,
+    pdfUrl: testData.pdfUrl,
+    categoryId: testData.categoryId,
+    teacherDisciplineId: relationTeacherDiscipline?.id!,
+  };
+
+  return await testRepository.createTest(createTestData);
 }
