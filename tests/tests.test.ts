@@ -19,14 +19,14 @@ describe("Testing route GET /test/discipline", () => {
       .post("/signin")
       .send(userFactory.loginUser);
 
-    const token = user.text;
+    const header = user.text;
 
     const result = await supertest(app)
-      .get(`/test/discipline`)
-      .set({ Authorization: `Bearer ${token}` })
-      .send();
+      .get("/test/discipline")
+      .set("Authorization", header);
 
-    expect(result.body).toBeInstanceOf(Object);
+    expect(result.status).toEqual(200);
+    expect(result.body).toBeInstanceOf(Array);
   });
 
   it("Should return status 401 when the user try to get the tests but the token isn't informed", async () => {
@@ -37,8 +37,7 @@ describe("Testing route GET /test/discipline", () => {
 
     const result = await supertest(app)
       .get(`/test/discipline`)
-      .set({ Authorization: `Bearer ${token}` })
-      .send();
+      .set({ Authorization: `Bearer ${token}` });
 
     expect(result.status).toEqual(401);
   });
@@ -51,9 +50,28 @@ describe("Testing route GET /test/discipline", () => {
 
     const result = await supertest(app)
       .get(`/test/discipline`)
-      .set({ Authorization: `Bearer ${token}` })
-      .send();
+      .set({ Authorization: `Bearer ${token}` });
 
     expect(result.status).toEqual(401);
+  });
+});
+
+//TEACHER
+describe("Testing route GET /test/teacher", () => {
+  it("Should return status 200 when the user get the tests listed by teacher", async () => {
+    await supertest(app).post("/signup").send(userFactory.createUser);
+
+    const user = await supertest(app)
+      .post("/signin")
+      .send(userFactory.loginUser);
+
+    const header = user.text;
+
+    const result = await supertest(app)
+      .get("/test/teacher")
+      .set("Authorization", header);
+
+    expect(result.status).toEqual(200);
+    expect(result.body).toBeInstanceOf(Array);
   });
 });
