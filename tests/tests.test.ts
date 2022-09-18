@@ -11,6 +11,8 @@ afterAll(async () => {
   await prisma.$disconnect();
 });
 
+let header: any = null;
+
 describe("Testing route GET /test/discipline", () => {
   it("Should return status 200 when the user get the tests listed by disicpline", async () => {
     await supertest(app).post("/signup").send(userFactory.createUser);
@@ -19,7 +21,7 @@ describe("Testing route GET /test/discipline", () => {
       .post("/signin")
       .send(userFactory.loginUser);
 
-    const header = user.text;
+    header = user.text;
 
     const result = await supertest(app)
       .get("/test/discipline")
@@ -65,7 +67,7 @@ describe("Testing route GET /test/teacher", () => {
       .post("/signin")
       .send(userFactory.loginUser);
 
-    const header = user.text;
+    header = user.text;
 
     const result = await supertest(app)
       .get("/test/teacher")
@@ -73,5 +75,18 @@ describe("Testing route GET /test/teacher", () => {
 
     expect(result.status).toEqual(200);
     expect(result.body).toBeInstanceOf(Array);
+  });
+
+  it("Should return status 401 when the user try to get the assignments but the token isn't informed", async () => {
+    await supertest(app).post("/signup").send(userFactory.createUser);
+
+    await supertest(app).post("/signin").send(userFactory.loginUser);
+    const token = null;
+
+    const result = await supertest(app)
+      .get(`/test/teacher`)
+      .set({ Authorization: `Bearer ${token}` });
+
+    expect(result.status).toEqual(401);
   });
 });
