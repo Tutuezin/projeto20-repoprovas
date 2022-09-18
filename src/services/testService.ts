@@ -51,7 +51,35 @@ export async function createTest(testData: testTypes.ITest) {
 }
 
 export async function getTestByDiscipline() {
-  return await testRepository.getTestByDiscipline(); //TODO fazer build do objeto
+  const testByDiscipline = await testRepository.getTestByDiscipline(); //TODO fazer build do objeto
+
+  const buildTestByDiscipline = testByDiscipline.map((item) => {
+    return {
+      term: item.number,
+      disciplineInfos: item.discipline.map((infos) => {
+        return {
+          discipline: infos.name,
+          categories: infos.teachersDiscipline[0].tests.map(
+            (categoriesInfos) => {
+              return {
+                category: categoriesInfos.category.name,
+                tests: categoriesInfos.category.tests
+                  .map((testsInfos) => {
+                    return {
+                      name: testsInfos.name,
+                      teacherName: testsInfos.teachersDiscipline.teacher.name,
+                    };
+                  })
+                  .filter((notNull) => notNull),
+              };
+            }
+          ),
+        };
+      }),
+    };
+  });
+
+  return buildTestByDiscipline;
 }
 
 export async function getTestByTeacher() {
