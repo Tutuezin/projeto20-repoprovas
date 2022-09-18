@@ -14,5 +14,5 @@ export async function signIn(req: Request, res: Response) {
 
   const token = await authService.signIn(user);
 
-  res.status(200).send(`Token: ${token}`);
+  res.status(200).send(token);
 }
