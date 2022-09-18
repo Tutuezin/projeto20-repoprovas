@@ -77,11 +77,24 @@ describe("Testing route GET /test/teacher", () => {
     expect(result.body).toBeInstanceOf(Array);
   });
 
-  it("Should return status 401 when the user try to get the assignments but the token isn't informed", async () => {
+  it("Should return status 401 when the user try to get the tests but the token isn't informed", async () => {
     await supertest(app).post("/signup").send(userFactory.createUser);
 
     await supertest(app).post("/signin").send(userFactory.loginUser);
     const token = null;
+
+    const result = await supertest(app)
+      .get(`/test/teacher`)
+      .set({ Authorization: `Bearer ${token}` });
+
+    expect(result.status).toEqual(401);
+  });
+
+  it("Should return status 401 when the user try to get the tests but the token information is wrong", async () => {
+    await supertest(app).post("/signup").send(userFactory.createUser);
+
+    await supertest(app).post("/signin").send(userFactory.loginUser);
+    const token = "wrong_token";
 
     const result = await supertest(app)
       .get(`/test/teacher`)
