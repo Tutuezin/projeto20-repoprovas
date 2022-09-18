@@ -28,4 +28,18 @@ describe("Testing route GET /test/discipline", () => {
 
     expect(result.body).toBeInstanceOf(Object);
   });
+
+  it("Should return status 401 when the user try to get the tests but the token isn't informed", async () => {
+    await supertest(app).post("/signup").send(userFactory.createUser);
+
+    await supertest(app).post("/signin").send(userFactory.loginUser);
+    const token = null;
+
+    const result = await supertest(app)
+      .get(`/test/discipline`)
+      .set({ Authorization: `Bearer ${token}` })
+      .send();
+
+    expect(result.status).toEqual(401);
+  });
 });
