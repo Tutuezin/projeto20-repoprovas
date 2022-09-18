@@ -97,6 +97,7 @@ describe("Testing route POST /create", () => {
       name: "test_pdf",
       pdfUrl: "",
       categoryId: 15,
+      teacherId: 2,
       teacherDisciplineId: 10,
     };
 
@@ -140,7 +141,7 @@ describe("Testing route POST /create", () => {
     expect(result.status).toEqual(422);
   });
 
-  /* it("Should return status 422 when teacherDiscipline information is null or not found", async () => {
+  it("Should return status 422 when disciplineId information is null or not found", async () => {
     const body = {
       email: "test_email@testemail.com",
       password: "test_email@testemail.com",
@@ -161,14 +162,15 @@ describe("Testing route POST /create", () => {
       name: "test_pdf",
       pdfUrl: "test_email@testemail.com",
       categoryId: 15,
-      teacherDisciplineId: null,
+      disciplineId: null,
+      teacherId: 2,
     };
 
     const result = await supertest(app)
-      .post(`/create`)
+      .post(`/test/create`)
       .set({ Authorization: `Bearer ${token}` })
       .send(test);
 
     expect(result.status).toEqual(422);
-  }); */
+  });
 });
