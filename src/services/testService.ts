@@ -51,69 +51,13 @@ export async function createTest(testData: testTypes.ITest) {
 }
 
 export async function getTestByDiscipline() {
-  const testByDiscipline = await testRepository.getTestByDiscipline(); //TODO fazer build do objeto
+  const testByDiscipline = await testRepository.getTestByDiscipline();
 
-  const buildTestByDiscipline = testByDiscipline.map((item) => {
-    return {
-      term: item.number,
-      disciplineInfos: item.discipline.map((infos) => {
-        return {
-          discipline: infos.name,
-          categories: infos.teachersDiscipline[0].tests.map(
-            (categoriesInfos) => {
-              return {
-                category: categoriesInfos.category.name,
-                tests: categoriesInfos.category.tests
-                  .map((testsInfos) => {
-                    if (
-                      infos.id === testsInfos.teachersDiscipline.disciplineId
-                    ) {
-                      return {
-                        name: testsInfos.name,
-                        teacherName: testsInfos.teachersDiscipline.teacher.name,
-                      };
-                    }
-                  })
-                  .filter((notNull) => notNull),
-              };
-            }
-          ),
-        };
-      }),
-    };
-  });
-
-  return buildTestByDiscipline;
+  return testByDiscipline;
 }
 
 export async function getTestByTeacher() {
   const testByTeacher = await testRepository.getTestByTeacher();
 
-  const buildTestByTeacher = testByTeacher.map((item) => {
-    console.log(item);
-    return {
-      teacherName: item.name,
-      infos: item.teachersDiscipline[0].tests.map((infos) => {
-        return {
-          categoryId: infos.category.id,
-          categoryName: infos.category.name,
-
-          infoTests: infos.category.tests
-            .map((infoTests) => {
-              const tests = {
-                testName: infoTests.name,
-                disciplineName: infoTests.teachersDiscipline.discipline.name,
-                teacherName: infoTests.teachersDiscipline.teacher.name,
-              };
-
-              if (infoTests.teachersDiscipline.teacher.name === item.name)
-                return tests;
-            })
-            .filter((notNull) => notNull),
-        };
-      }),
-    };
-  });
-
-  return buildTestByTeacher;
+  return testByTeacher;
 }
