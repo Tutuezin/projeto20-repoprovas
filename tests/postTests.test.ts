@@ -133,7 +133,7 @@ describe("Testing route POST /create", () => {
     };
 
     const result = await supertest(app)
-      .post(`/create`)
+      .post(`/test/create`)
       .set({ Authorization: `Bearer ${token}` })
       .send(test);
 
