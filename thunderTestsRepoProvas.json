@@ -1,0 +1,124 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "Repo Provas",
+  "dateExported": "2022-09-18T22:08:20.484Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "_id": "e644e19f-1da4-4828-b3b5-86597389caae",
+      "name": "Authentication",
+      "containerId": "",
+      "created": "2022-09-11T22:30:38.837Z",
+      "sortNum": 10000
+    },
+    {
+      "_id": "ad408937-a933-456c-ad90-8c0ad4453267",
+      "name": "Tests",
+      "containerId": "",
+      "created": "2022-09-18T22:04:28.274Z",
+      "sortNum": 10000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "e15668d1-3dd9-413d-8925-1b3b38c42f4c",
+      "colId": "ba1b9121-7279-4467-926e-8a5e29b65503",
+      "containerId": "e644e19f-1da4-4828-b3b5-86597389caae",
+      "name": "signIn",
+      "url": "localhost:5000/signin",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2022-09-11T22:30:38.839Z",
+      "modified": "2022-09-18T22:03:51.568Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n\t\"email\":\"test@gmail.com\",\n\t\"password\": \"1234567890\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "d451a338-2ed2-47b0-8bfd-5b15088cff3f",
+      "colId": "ba1b9121-7279-4467-926e-8a5e29b65503",
+      "containerId": "ad408937-a933-456c-ad90-8c0ad4453267",
+      "name": "createTest",
+      "url": "localhost:5000/test/create",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2022-09-18T22:04:36.440Z",
+      "modified": "2022-09-18T22:07:46.695Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYzNTM4ODUyLCJleHAiOjE2NjM2MjUyNTJ9.-SzjPrJt-GJioKUZsJ5Door1dRB8tgfWt2cS51ni20k"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n\t\"name\": \"test\",\n\t\"pdfUrl\": \"https://www.test.pdf\",\n\t\"categoryId\": 1,\n\t\"disciplineId\":4 ,\n\t\"teacherId\": 2\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "6aa7ebc6-c3f4-4f39-b4cb-5b591bffae86",
+      "colId": "ba1b9121-7279-4467-926e-8a5e29b65503",
+      "containerId": "e644e19f-1da4-4828-b3b5-86597389caae",
+      "name": "signUp",
+      "url": "localhost:5000/signup",
+      "method": "POST",
+      "sortNum": 15000,
+      "created": "2022-09-11T22:30:38.844Z",
+      "modified": "2022-09-18T22:07:26.963Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n\t\"email\":\"test@gmail.com\",\n\t\"password\": \"1234567890\",\n\t\"confirmPassword\": \"1234567890\"\n\t\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "8acea092-fb79-49e9-9d1a-c526c34f32d3",
+      "colId": "ba1b9121-7279-4467-926e-8a5e29b65503",
+      "containerId": "ad408937-a933-456c-ad90-8c0ad4453267",
+      "name": "getTestByDiscipline",
+      "url": "localhost:5000/test/discipline",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2022-09-18T22:05:38.582Z",
+      "modified": "2022-09-18T22:07:38.607Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYzNTM4ODUyLCJleHAiOjE2NjM2MjUyNTJ9.-SzjPrJt-GJioKUZsJ5Door1dRB8tgfWt2cS51ni20k"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "8acb4f38-6b59-4ccd-a8bc-e3ef9afcc686",
+      "colId": "ba1b9121-7279-4467-926e-8a5e29b65503",
+      "containerId": "ad408937-a933-456c-ad90-8c0ad4453267",
+      "name": "getTestByTeacher",
+      "url": "localhost:5000/test/discipline",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2022-09-18T22:06:51.409Z",
+      "modified": "2022-09-18T22:07:41.322Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYzNTM4ODUyLCJleHAiOjE2NjM2MjUyNTJ9.-SzjPrJt-GJioKUZsJ5Door1dRB8tgfWt2cS51ni20k"
+        }
+      ],
+      "params": [],
+      "tests": []
+    }
+  ]
+}
