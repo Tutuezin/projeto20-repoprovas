@@ -65,10 +65,14 @@ export async function getTestByDiscipline() {
                 category: categoriesInfos.category.name,
                 tests: categoriesInfos.category.tests
                   .map((testsInfos) => {
-                    return {
-                      name: testsInfos.name,
-                      teacherName: testsInfos.teachersDiscipline.teacher.name,
-                    };
+                    if (
+                      infos.id === testsInfos.teachersDiscipline.disciplineId
+                    ) {
+                      return {
+                        name: testsInfos.name,
+                        teacherName: testsInfos.teachersDiscipline.teacher.name,
+                      };
+                    }
                   })
                   .filter((notNull) => notNull),
               };
@@ -86,6 +90,7 @@ export async function getTestByTeacher() {
   const testByTeacher = await testRepository.getTestByTeacher();
 
   const buildTestByTeacher = testByTeacher.map((item) => {
+    console.log(item);
     return {
       teacherName: item.name,
       infos: item.teachersDiscipline[0].tests.map((infos) => {

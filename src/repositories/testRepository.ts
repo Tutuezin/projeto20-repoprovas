@@ -12,8 +12,9 @@ export async function getTestByDiscipline() {
     select: {
       number: true,
       discipline: {
-        orderBy: [{ termId: "asc" }],
-        include: {
+        select: {
+          name: true,
+          id: true,
           teachersDiscipline: {
             select: {
               tests: {
@@ -30,6 +31,7 @@ export async function getTestByDiscipline() {
                           teachersDiscipline: {
                             select: {
                               teacher: true,
+                              disciplineId: true,
                             },
                           },
                         },
