@@ -50,7 +50,7 @@ describe("Testing route GET /test/discipline", () => {
     const token = "wrong_token";
 
     const result = await supertest(app)
-      .get(`/discipline`)
+      .get(`/test/discipline`)
       .set({ Authorization: `Bearer ${token}` })
       .send();
 
