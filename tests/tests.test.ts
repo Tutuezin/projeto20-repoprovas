@@ -42,4 +42,18 @@ describe("Testing route GET /test/discipline", () => {
 
     expect(result.status).toEqual(401);
   });
+
+  it("Should return status 401 when the user try to get the tests but the token information is wrong", async () => {
+    await supertest(app).post("/signup").send(userFactory.createUser);
+
+    await supertest(app).post("/signin").send(userFactory.loginUser);
+    const token = "wrong_token";
+
+    const result = await supertest(app)
+      .get(`/discipline`)
+      .set({ Authorization: `Bearer ${token}` })
+      .send();
+
+    expect(result.status).toEqual(401);
+  });
 });
