@@ -1,7 +1,7 @@
 import supertest from "supertest";
+import app from "../src/app";
 import { prisma } from "../src/config/database";
 import * as userFactory from "./factories/authFactory";
-import app from "../src/app";
 
 beforeEach(async () => {
   await prisma.$executeRaw`TRUNCATE TABLE users RESTART IDENTITY;`;
@@ -13,6 +13,7 @@ afterAll(async () => {
 
 let header: any = null;
 
+// GET /test/discipline
 describe("Testing route GET /test/discipline", () => {
   it("Should return status 200 when the user get the tests listed by disicpline", async () => {
     await supertest(app).post("/signup").send(userFactory.createUser);
@@ -58,7 +59,7 @@ describe("Testing route GET /test/discipline", () => {
   });
 });
 
-//TEACHER
+// GET /test/teacher
 describe("Testing route GET /test/teacher", () => {
   it("Should return status 200 when the user get the tests listed by teacher", async () => {
     await supertest(app).post("/signup").send(userFactory.createUser);
