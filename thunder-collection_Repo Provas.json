@@ -1,7 +1,7 @@
 {
   "client": "Thunder Client",
   "collectionName": "Repo Provas",
-  "dateExported": "2022-09-18T22:08:20.484Z",
+  "dateExported": "2022-09-19T19:54:05.518Z",
   "version": "1.1",
   "folders": [
     {
@@ -25,11 +25,11 @@
       "colId": "ba1b9121-7279-4467-926e-8a5e29b65503",
       "containerId": "e644e19f-1da4-4828-b3b5-86597389caae",
       "name": "signIn",
-      "url": "localhost:5000/signin",
+      "url": "https://repo-tests.herokuapp.com/signin",
       "method": "POST",
       "sortNum": 10000,
       "created": "2022-09-11T22:30:38.839Z",
-      "modified": "2022-09-18T22:03:51.568Z",
+      "modified": "2022-09-19T19:54:00.860Z",
       "headers": [],
       "params": [],
       "body": {
@@ -44,11 +44,11 @@
       "colId": "ba1b9121-7279-4467-926e-8a5e29b65503",
       "containerId": "ad408937-a933-456c-ad90-8c0ad4453267",
       "name": "createTest",
-      "url": "localhost:5000/test/create",
+      "url": "https://repo-tests.herokuapp.com/test/create",
       "method": "POST",
       "sortNum": 10000,
       "created": "2022-09-18T22:04:36.440Z",
-      "modified": "2022-09-18T22:07:46.695Z",
+      "modified": "2022-09-19T19:53:35.486Z",
       "headers": [
         {
           "name": "Authorization",
@@ -68,11 +68,11 @@
       "colId": "ba1b9121-7279-4467-926e-8a5e29b65503",
       "containerId": "e644e19f-1da4-4828-b3b5-86597389caae",
       "name": "signUp",
-      "url": "localhost:5000/signup",
+      "url": "https://repo-tests.herokuapp.com/signup",
       "method": "POST",
       "sortNum": 15000,
       "created": "2022-09-11T22:30:38.844Z",
-      "modified": "2022-09-18T22:07:26.963Z",
+      "modified": "2022-09-19T19:53:23.437Z",
       "headers": [],
       "params": [],
       "body": {
@@ -87,11 +87,11 @@
       "colId": "ba1b9121-7279-4467-926e-8a5e29b65503",
       "containerId": "ad408937-a933-456c-ad90-8c0ad4453267",
       "name": "getTestByDiscipline",
-      "url": "localhost:5000/test/discipline",
+      "url": "https://repo-tests.herokuapp.com/test/discipline",
       "method": "GET",
       "sortNum": 20000,
       "created": "2022-09-18T22:05:38.582Z",
-      "modified": "2022-09-18T22:07:38.607Z",
+      "modified": "2022-09-19T19:53:42.355Z",
       "headers": [
         {
           "name": "Authorization",
@@ -106,11 +106,11 @@
       "colId": "ba1b9121-7279-4467-926e-8a5e29b65503",
       "containerId": "ad408937-a933-456c-ad90-8c0ad4453267",
       "name": "getTestByTeacher",
-      "url": "localhost:5000/test/discipline",
+      "url": "https://repo-tests.herokuapp.com/test/discipline",
       "method": "GET",
       "sortNum": 30000,
       "created": "2022-09-18T22:06:51.409Z",
-      "modified": "2022-09-18T22:07:41.322Z",
+      "modified": "2022-09-19T19:53:45.956Z",
       "headers": [
         {
           "name": "Authorization",
